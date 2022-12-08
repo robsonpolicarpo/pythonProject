@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  chrome:
+    image: seleniarm/node-chromium:4.3.0-20220728
+    shm_size: 2gb
+    depends_on:
+      - hub
+    environment:
+      - SE_EVENT_BUS_HOST=hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      - SE_SCREEN_WIDTH=1366
+      - SE_SCREEN_HEIGHT=768
+      - SE_NODE_MAX_SESSIONS=1
+    volumes:
+      - /dev/shm:/dev/shm
+    privileged: true
+
+  hub:
+    image: seleniarm/hub:4.3.0-20220728
+    container_name: hub
+    ports:
+      - "4442:4442"
+      - "4443:4443"
+      - "4444:4444"

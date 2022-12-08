@@ -1,0 +1,7 @@
+pytest==7.2.0
+selene==2.0.0b16
+pytest-html-reporter==0.2.9
+Faker==15.3.2
+requests==2.27.1
+pylint==2.15.6
+pytest-xdist==3.1.0
